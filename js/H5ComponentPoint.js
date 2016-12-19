@@ -13,7 +13,9 @@ var H5ComponentPoint = function ( name, cfg ) {
 
         var name = $('<div class="name">'+item[0]+'</div>');
         var rate = $('<div class="per">'+(item[1]*100)+'%</div>');
-        name.append(rate)
+
+
+        name.append(rate);
         point.append(name);
 
         var per = (item[1]/base*100) + '%';

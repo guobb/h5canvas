@@ -3,7 +3,7 @@
 
 }
 
-.h5_component_bar .line{
+.h5_component_bar_v .line{
     height: 15px;
     font-size: 12px;
     line-height: 15px;
@@ -11,21 +11,21 @@
 
 }
 
-.h5_component_bar .name{
+.h5_component_bar_v .name{
     width: 60px;
     float: left;
     color: #000;
     text-align: center;
 }
 
-.h5_component_bar .rate{
+.h5_component_bar_v .rate{
     height: 15px;
     margin-left: 5px;
     float:left;
     position: relative;
 }
 
-.h5_component_bar .rate .bg {
+.h5_component_bar_v .rate .bg {
     background-color: #99c0ff;
     width: 0;
     height: 100%;
@@ -35,7 +35,7 @@
     border-radius: 3px;
 }
 
-.h5_component_bar .per {
+.h5_component_bar_v .per {
     width: 20px;
     color: #99c0ff;
     margin-left: 5px;
@@ -43,21 +43,21 @@
     -webkit-opacity: 0;
 }
 
-.h5_component_bar_load .rate .bg{
+.h5_component_bar_v_load .rate .bg{
     -webkit-transition: all 1s 0.5s;
     width: 100%;
 }
 
-.h5_component_bar_leave .rate .bg {
+.h5_component_bar_v_leave .rate .bg {
     width: 0%;
 }
 
-.h5_component_bar_load .per {
+.h5_component_bar_v_load .per {
     -webkit-transition: all 1s 1.5s;
     -webkit-opacity: 1;
 }
 
-.h5_component_bar_leave .per {
+.h5_component_bar_v_leave .per {
     -webkit-opacity: 0;
 }
 
