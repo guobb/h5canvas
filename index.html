@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <title>index</title>
+    <!-- 载入所有的组件资源 -->
+    <script type="text/javascript" src="js/lib/jquery.js"></script>
+    <script type="text/javascript" src="js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.fullPage.js"></script>
+
+    <!-- 加载 H5 相关的资源 -->
+    <script type="text/javascript">
+        var res = [
+            'Base','Bar','Bar_v','Point','Polyline',
+            'Radar','Pie','Ring'
+        ];
+        var html = [];
+        for(s in res){
+            html.push('<script type="text/javascript" src="js/H5Component'+res[s]+'.js"><\/script>');
+            html.push('<link rel="stylesheet" type="text/css" href="css/H5Component'+res[s]+'.css">')
+            //console.log(res[s])
+        }
+
+        document.write( html.join(''));
+    </script>
+
+    <!-- H5 对象 进行内容管理 -->
+    <script type="text/javascript" src="js/H5.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/H5.css">
+
+    <!-- 页面逻辑的样式 -->
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .h5_page {
+            background-image: url(img/page_bg.png);
+        }
+
+        .h5_page_face {
+            background-image: url(img/face_bg.png);
+        }
+
+        .h5_component_name_slogan{
+            -webkit-animation: rock 2s infinite 2s;
+        }
+
+        @-webkit-keyframes rock {
+            0%{ transform:rotate(0deg)}
+            5%{ transform:rotate(3deg)}
+            10%{ transform:rotate(-4deg)}
+            15%{ transform:rotate(3deg)}
+            20%{ transform:rotate(-2deg)}
+            25%{ transform:rotate(1deg)}
+            30%{ transform:rotate(-1deg)}
+            70%{ transform:rotate(0deg)}
+            100%{ transform:rotate(0deg)}
+
+        }
+        .h5_component_name_caption {
+            background-image: url(img/page_caption_bg.png);
+            width: 283px;
+            height: 160px;
+            line-height: 140px;
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .h5_component_name_back {
+            top: 30px;
+            -webkit-animation: back 2s infinite 2s;
+        }
+
+        @-webkit-keyframes back {
+            50% { top: 20px }
+        }
+    </style>
+    <!-- 主要逻辑 -->
+    <script type="text/javascript">
+        $(function () {
+
+            var h5 = new H5();
+
+            h5.whenAddPage = function () {
+                this.addComponent('slide_up',{
+                    bg: 'img/footer.png',
+                    css: {
+                        left: 0,
+                        bottom: -20,
+                        width: '100%',
+                        height: '20px',
+                        zIndex: 999,
+                        opacity: 0
+                    },
+                    animationIn: {
+                        opacity: 1,
+                        bottom: '-1px'
+                    },
+                    animationOut: {
+                        opacity: 0,
+                        bottom: '-20px'
+                    },
+                    delay: 500
+                })
+            };
+
+            h5
+                .addPage('face')
+                    .addComponent('logo', {
+                        center: true,
+                        width: 395,
+                        height: 130,
+                        bg: 'img/face_logo'.png,
+                        css: {opacity:0},
+                        animationIn: {
+                            top: 100,
+                            opacity: 1
+                        },
+                        animationOut: {
+                            top: 0,
+                            opacity: 0
+                        }
+                    })
+                    .addComponent('slogan', {
+                        center :true,
+                        width: 365,
+                        height: 99,
+                        bg: 'img/face_slogan.png',
+                        css: {opacity:0, top:200},
+                        animationIn: {
+                            left: '50%',
+                            opacity: 1
+                        },
+                        animationOut: {
+                            left: '0%',
+                            opacity: 0
+                        },
+                        delay: 500
+                    })
+                    .addComponent('face_img_left',{
+                        width: 370,
+                        height: 493,
+                        bg: 'img/face_img_left.png',
+                        css: {
+                            opacity: 0,
+                            left: -50,
+                            bottom: -50
+                        },
+                        animationIn: {
+                            bottom: 0,
+                            left: 0,
+                            opacity: 1
+                        },
+                        animationOut: {
+                            bottom: -50,
+                            left: -50,
+                            opacity: 0
+                        },
+                        delay: 1000
+                    })
+                    .addComponent('face_img_right',{
+                    width: 276,
+                    height: 449,
+                    bg: 'img/face_img_right.png',
+                    css: {
+                        opacity: 0,
+                        right: -50,
+                        bottom: -50
+                    },
+                    animationIn: {
+                        bottom: 0,
+                        right: 0,
+                        opacity: 1
+                    },
+                    animationOut: {
+                        bottom: -50,
+                        right: -50,
+                        opacity: 0
+                    },
+                    delay: 1000
+                })
+                .addPage()
+                    .addComponent('caption', {text:'核心理念'})
+                    .addComponent('text',{
+                        width: 500,
+                        height: 30,
+                        center: true,
+                        text: '要想改变，首先改变自己',
+                        css:{
+                            opacity:0,
+                            textAlign: 'center',
+                            color: 'red',
+                            fontSize: '26px'
+                        },
+                        animationIn:{
+                            opacity:1,
+                            top: 150
+                        },
+                        animationOut:{
+                            opacity: 0,
+                            top: 240
+                        }
+                    })
+                    .addComponent('description', {
+                        center: true,
+                        width: 481,
+                        height: 295,
+                        bg: 'img/description_bg.gif',
+                        text:'要使别人喜欢你，首先你得改变对人的态度，把精神放得轻松一点，' +
+                        '表情自然，笑容可掬，这样别人就会对你产生喜爱的感觉了',
+                        css: {
+                            opacity: 0,
+                            padding: '15px 10px 10px 10px',
+                            color: '#fff',
+                            fontSize: '15px',
+                            lineHeight: '18px',
+                            textAlign: 'justify',
+                            top: 240
+                        },
+                        animationIn: {
+                            opacity: 1,
+                            top: 250
+                        },
+                        animationOut: {
+                            opacity: 0,
+                            top: 240
+                        },
+                        delay:1000
+                    })
+                    .addComponent('people',{
+                        center: true,
+                        width: 515,
+                        height: 305,
+                        bg: 'img/p1_people.png',
+                        css: {
+                            opacity: 0,
+                            bottom: 0
+                        },
+                        animationIn:{opacity:1, bottom: 40},
+                        animationOut: {opacity:0, bottom: 0},
+                        delay: 500
+                    })
+                .addPage('tail')
+                    .addComponent('logo',{
+                        center:true,
+                        height: 120,
+                        width: 359,
+                        bg:'img/tail_logo.png',
+                        css: {
+                            top: 240,
+                            opacity:0
+                        },
+                        animationIn:{
+                            opacity: 1,
+                            top:210
+                        },
+                        animationOut: {
+                            opacity: 0,
+                            top: 240
+                        }
+                    })
+                    .addComponent('slogan',{
+                        center:true,
+                        height: 46,
+                        width: 314,
+                        bg:'img/tail_slogan.png',
+                        css: {
+                            top: 280,
+                            opacity:0
+                        },
+                        animationIn:{
+                            opacity: 1,
+                            left: '50%'
+                        },
+                        animationOut: {
+                            opacity: 0,
+                            left: '0%'
+                        },
+                        delay: 500
+                    })
+                    .addComponent('share',{
+                        height: 120,
+                        width: 128,
+                        bg:'img/tail_share.png',
+                        css: {
+                            right:110,
+                            top: 110,
+                            opacity:0
+                        },
+                        animationIn:{
+                            opacity: '1',
+                            top:20,
+                            right: 10
+                        },
+                        animationOut: {
+                            opacity: 0,
+                            top: 110,
+                            right:110
+                        },
+                        delay: 1000
+                    })
+                    .addComponent('back',{
+                        height: 50,
+                        width: 52,
+                        bg:'img/tail_back.png',
+                        css: {
+                            right:110,
+                            top: 10,
+                            opacity:1
+                        },
+                        center: true,
+                        onclick: function () {
+                            $.fn.fullpage.moveTo(1);
+                        }
+                })
+                .loader(3)
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

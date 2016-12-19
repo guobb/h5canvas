@@ -21,16 +21,25 @@ var H5ComponentBase = function ( name, cfg ) {
         })
     }
     // ...很多自定义参数
+
+    if( typeof cfg.onclick === 'function' ){
+        component.on('click', cfg.onclick);
+    }
     component.on('onLoad', function () {
-        component.addClass(cls+'_load').removeClass(cls+'_leave');
-        cfg.animationIn && component.animate( cfg.animationIn );
+        setTimeout(function () {
+            component.addClass(cls+'_load').removeClass(cls+'_leave');
+            cfg.animationIn && component.animate( cfg.animationIn );
+        }, cfg.delay || 0);
+
         //组织事件冒泡 防止死循环
         return false;
     });
 
     component.on('onLeave', function () {
-        component.addClass(cls+'_leave').removeClass(cls+'_load');
-        cfg.animationOut && component.animate( cfg.animationOut );
+        setTimeout(function () {
+            component.addClass(cls+'_leave').removeClass(cls+'_load');
+            cfg.animationOut && component.animate( cfg.animationOut );
+        }, cfg.delay || 0);
 
         return false;
     });
